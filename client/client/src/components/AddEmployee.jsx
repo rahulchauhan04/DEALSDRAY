@@ -61,8 +61,8 @@ const AddEmployee = ({ onClose, onAdd }) => {
       setImage(null);
       onAdd && onAdd(result.employee); // Pass the new employee to the onAdd callback
     } catch (error) {
-      setError(error.response?.data?.message || 'Failed to add employee');
-      console.error('Failed to add employee', error);
+      setError(error.response?.data?.error?.message || 'Failed to add employee');
+      console.error('Failed to add employee:', error);
     } finally {
       setLoading(false);
     }

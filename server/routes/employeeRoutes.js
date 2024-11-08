@@ -30,7 +30,8 @@ router.get('/', async (req, res) => {
 
     res.json({ employees, totalEmployees, totalActiveEmployees });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching employees:', error);
+    res.status(500).json({ message: 'Failed to fetch employees', error: error.message });
   }
 });
 
@@ -83,7 +84,8 @@ router.get('/:id', async (req, res) => {
     }
     res.json(employee);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching employee:', error);
+    res.status(500).json({ message: 'Failed to fetch employee', error: error.message });
   }
 });
 
@@ -99,7 +101,8 @@ router.put('/:id', async (req, res) => {
     
     res.json(updatedEmployee);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error updating employee:', error);
+    res.status(500).json({ message: 'Failed to update employee', error: error.message });
   }
 });
 
@@ -118,7 +121,8 @@ router.put('/:id/active', async (req, res) => {
 
     res.json({ message: 'Employee status updated', active: employee.active });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error toggling employee status:', error);
+    res.status(500).json({ message: 'Failed to toggle employee status', error: error.message });
   }
 });
 
@@ -134,7 +138,8 @@ router.delete('/:id', async (req, res) => {
     
     res.json({ message: 'Employee deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error deleting employee:', error);
+    res.status(500).json({ message: 'Failed to delete employee', error: error.message });
   }
 });
 
